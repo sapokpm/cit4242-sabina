@@ -25,10 +25,11 @@ public class CsvBookSource implements BookSource {
                     firstLine = false;
                     continue;
                 }
-                String[] parts = line.split(",", 2);
+                                String[] parts = line.split(",", 3);
                 String title = parts[0].trim();
-                int pages = Integer.parseInt(parts[1].trim());
-                books.add(new Book(title, pages));
+                String author = parts[1].trim();
+                int pages = Integer.parseInt(parts[2].trim());
+                books.add(new Book(title, author, pages));
             }
         } catch (Exception e) {
             throw new RuntimeException("Failed to load CSV: " + resource, e);
